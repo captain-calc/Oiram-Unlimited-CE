@@ -84,8 +84,6 @@ bool LevelPack::WriteConfig()
   uint8_t pack = 0;
   bool config_written = false;
   
-  ti_CloseAll();
-  
   if ((slot = ti_Open(OIRAM_SAVE_APPVAR, "r+")) && (temp != nullptr))
   {
     ti_Read(&num_packs, 1, 1, slot);

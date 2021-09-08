@@ -111,9 +111,7 @@ void LevelPackList::Paint()
   
   if (m_Index < m_NumPacks - 1)
     cutil_PrintCentered(m_PackNames[m_Index + 1], m_YPOS + 25);
-  
-  ti_CloseAll();
-  
+    
   if ((slot = ti_Open(m_PackNames[m_Index], "r")))
   {
     gfx_SetColor(GUI::GetBGColor());
