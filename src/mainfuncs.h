@@ -42,7 +42,7 @@ class MainMenuBackground : public UnfocusableWidget
     void Run() {}
     void Paint();
     
-    virtual ~MainMenuBackground() {}
+    ~MainMenuBackground() {}
 };
 
 
@@ -76,7 +76,7 @@ class EditorBackground : public UnfocusableWidget
     void Run() {}
     void Paint();
     
-    virtual ~EditorBackground() {}
+    ~EditorBackground() {}
 };
 
 

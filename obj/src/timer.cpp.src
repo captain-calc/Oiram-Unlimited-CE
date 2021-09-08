@@ -1,0 +1,134 @@
+	section	.text,"ax",@progbits
+	assume	adl = 1
+	section	.text,"ax",@progbits
+	private	___dtor__ZN5Timer8instanceE
+___dtor__ZN5Timer8instanceE:
+	ld	iy, -917456
+	ld.sis	bc, -2
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	call	__sand
+	ld	(iy), l
+	ld	(iy + 1), h
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN5TimerC2Ev
+__ZN5TimerC2Ev:
+	call	__frameset0
+	pop	ix
+	jp	__ZN5Timer5ResetEv
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN5Timer5ResetEv
+__ZN5Timer5ResetEv:
+	ld	iy, -917456
+	ld.sis	bc, -2
+	xor	a, a
+	ld	de, -917500
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	call	__sand
+	ld	(iy), l
+	ld	(iy + 1), h
+	ld	bc, 16384
+	ld	hl, -917504
+	ld	(hl), bc
+	ld	iy, -917504
+	ld	(iy + 3), a
+	push	de
+	pop	hl
+	ld	(hl), bc
+	push	de
+	pop	iy
+	ld	(iy + 3), a
+	ld	iy, -917456
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	ld.sis	bc, -520
+	call	__sand
+	ld.sis	de, 7
+	add.sis	hl, de
+	ld	(iy), l
+	ld	(iy + 1), h
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN5TimerD2Ev
+__ZN5TimerD2Ev:
+	call	__frameset0
+	ld	iy, -917456
+	ld.sis	bc, -2
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	call	__sand
+	ld	(iy), l
+	ld	(iy + 1), h
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN5Timer9IsExpiredEv
+__ZN5Timer9IsExpiredEv:
+	ld	hl, -3
+	call	__frameset
+	ld	iy, -917452
+	ld.sis	bc, 4
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	call	__sand
+	ld	a, l
+	or	a, a
+	jq	z, BB4_2
+	ld	(iy), c
+	ld	(iy + 1), b
+	ld	(ix - 3), hl
+	call	__ZN5Timer5ResetEv
+	ld	hl, (ix - 3)
+BB4_2:
+	ld	a, l
+	or	a, a
+	jq	nz, BB4_3
+	ld	a, 0
+	jq	BB4_5
+BB4_3:
+	ld	a, 1
+BB4_5:
+	pop	hl
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	private	__GLOBAL__sub_I_timer.cpp
+__GLOBAL__sub_I_timer.cpp:
+	call	__ZN5Timer5ResetEv
+	ld	hl, ___dtor__ZN5Timer8instanceE
+	push	hl
+	call	_atexit
+	pop	hl
+	ret
+	section	.text,"ax",@progbits
+
+	section	.bss,"aw",@nobits
+	public	__ZN5Timer8instanceE
+__ZN5Timer8instanceE:
+	rb	1
+
+	section	.init_array,"aw",@init_array
+	dl	__GLOBAL__sub_I_timer.cpp
+	public	__ZN5TimerC1Ev
+	label	__ZN5TimerC1Ev at __ZN5TimerC2Ev
+	public	__ZN5TimerD1Ev
+	label	__ZN5TimerD1Ev at __ZN5TimerD2Ev
+	ident	"clang version 14.0.0 (https://github.com/jacobly0/llvm-project a139def90d26173f771eb1eca797633d1fbb2797)"
+	extern	__Unwind_SjLj_Register
+	extern	__frameset
+	extern	__Unwind_SjLj_Unregister
+	extern	_atexit
+	extern	__sand
+	extern	__frameset0

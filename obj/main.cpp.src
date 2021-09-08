@@ -1,0 +1,94 @@
+	section	.text,"ax",@progbits
+	assume	adl = 1
+	section	.text,"ax",@progbits
+	public	_main
+_main:
+	ld	hl, -1
+	call	__frameset
+	ld	(ix + -1), 0
+	call	_ti_CloseAll
+	call	__Z31mainfuncs_OiramSaveAppvarExistsv
+	ld	l, 1
+	xor	a, l
+	bit	0, a
+	jq	nz, BB0_4
+BB0_2:
+	pea	ix + -1
+	call	__Z21mainfuncs_GetPackNamePb
+	pop	de
+	ld	a, (ix + -1)
+	ld	e, 1
+	xor	a, e
+	xor	a, e
+	bit	0, a
+	jq	nz, BB0_5
+	push	hl
+	call	__Z18mainfuncs_EditPackPKc
+	pop	hl
+	ld	a, (ix + -1)
+	or	a, a
+	jq	z, BB0_2
+	jq	BB0_5
+BB0_4:
+	call	__Z30mainfuncs_OiramSaveAppvarErrorv
+BB0_5:
+	or	a, a
+	sbc	hl, hl
+	inc	sp
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	private	__GLOBAL__sub_I_main.cpp
+__GLOBAL__sub_I_main.cpp:
+	ld	hl, _graphx
+	ld	iy, _mainprog_palette
+	ld	de, 84
+	ld	bc, 1
+	push	bc
+	dec	bc
+	push	bc
+	push	de
+	push	iy
+	push	hl
+	call	__ZN6GraphXC1EPKvjhh
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, ___dso_handle
+	push	hl
+	ld	hl, _graphx
+	push	hl
+	ld	hl, __ZN6GraphXD1Ev
+	push	hl
+	call	___cxa_atexit
+	pop	hl
+	pop	hl
+	pop	hl
+	ret
+	section	.text,"ax",@progbits
+
+	section	.bss,"aw",@nobits
+	public	_graphx
+_graphx:
+	rb	8
+
+	section	.init_array,"aw",@init_array
+	dl	__GLOBAL__sub_I_main.cpp
+	ident	"clang version 12.0.0 (https://github.com/jacobly0/llvm-project 170be88120e3aa88c20eea5615ba76b8f1d6c647)"
+	extern	_ti_CloseAll
+	extern	__Unwind_SjLj_Register
+	extern	__Z21mainfuncs_GetPackNamePb
+	extern	__frameset
+	extern	__ZN6GraphXD1Ev
+	extern	__Unwind_SjLj_Unregister
+	extern	__Z31mainfuncs_OiramSaveAppvarExistsv
+	extern	__Z18mainfuncs_EditPackPKc
+	extern	__ZN6GraphXC1EPKvjhh
+	extern	___dso_handle
+	extern	___cxa_atexit
+	extern	_mainprog_palette
+	extern	__Z30mainfuncs_OiramSaveAppvarErrorv

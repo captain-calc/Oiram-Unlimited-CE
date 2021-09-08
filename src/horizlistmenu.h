@@ -89,7 +89,7 @@ class HorizListMenu : public FocusableWidget
     
     uint8_t GetOffset() { return m_Index; }
     
-    virtual ~HorizListMenu() {}
+    ~HorizListMenu() {}
 };
 
 #endif

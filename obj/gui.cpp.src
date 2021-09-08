@@ -1,0 +1,628 @@
+	section	.text,"ax",@progbits
+	assume	adl = 1
+	section	.text,"ax",@progbits
+	public	__ZN3GUI20AddUnfocusableWidgetEP17UnfocusableWidget
+__ZN3GUI20AddUnfocusableWidgetEP17UnfocusableWidget:
+	call	__frameset0
+	ld	a, (__ZN3GUI23m_NumUnfocusableWidgetsE)
+	ld	e, a
+	cp	a, 3
+	jq	nc, BB0_2
+	ld	iy, __ZN3GUI20m_UnfocusableWidgetsE
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	ld	a, e
+	inc	a
+	ld	(__ZN3GUI23m_NumUnfocusableWidgetsE), a
+	ld	bc, 3
+	call	__imulu
+	push	hl
+	pop	bc
+	add	iy, bc
+	ld	hl, (ix + 6)
+	ld	(iy), hl
+BB0_2:
+	ld	a, e
+	cp	a, 3
+	jq	c, BB0_3
+	ld	a, 0
+	jq	BB0_5
+BB0_3:
+	ld	a, 1
+BB0_5:
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI18AddFocusableWidgetEP15FocusableWidget
+__ZN3GUI18AddFocusableWidgetEP15FocusableWidget:
+	call	__frameset0
+	ld	a, (__ZN3GUI21m_NumFocusableWidgetsE)
+	ld	e, a
+	cp	a, 6
+	jq	nc, BB1_2
+	ld	iy, __ZN3GUI18m_FocusableWidgetsE
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	ld	a, e
+	inc	a
+	ld	(__ZN3GUI21m_NumFocusableWidgetsE), a
+	ld	bc, 3
+	call	__imulu
+	push	hl
+	pop	bc
+	add	iy, bc
+	ld	hl, (ix + 6)
+	ld	(iy), hl
+BB1_2:
+	ld	a, e
+	cp	a, 6
+	jq	c, BB1_3
+	ld	a, 0
+	jq	BB1_5
+BB1_3:
+	ld	a, 1
+BB1_5:
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI23RemoveUnfocusableWidgetEh
+__ZN3GUI23RemoveUnfocusableWidgetEh:
+	ld	hl, -3
+	call	__frameset
+	ld	e, (ix + 6)
+	ld	a, (__ZN3GUI23m_NumUnfocusableWidgetsE)
+	ld	d, a
+	ld	a, e
+	cp	a, d
+	jq	nc, BB2_6
+	ld	iy, __ZN3GUI20m_UnfocusableWidgetsE
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	ld	bc, 3
+	ld	(ix + -3), hl
+	call	__imulu
+	push	hl
+	pop	bc
+	add	iy, bc
+	ld	hl, 0
+	ld	(iy), hl
+	dec	d
+	ld	a, d
+	ld	(__ZN3GUI23m_NumUnfocusableWidgetsE), a
+	cp	a, e
+	jq	c, BB2_3
+	ld	e, d
+BB2_3:
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	ld	de, (ix + -3)
+	or	a, a
+	sbc	hl, de
+BB2_4:
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jq	z, BB2_6
+	ld	de, (iy)
+	ld	(iy + -3), de
+	dec	hl
+	lea	iy, iy + 3
+	jq	BB2_4
+BB2_6:
+	pop	hl
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI21RemoveFocusableWidgetEh
+__ZN3GUI21RemoveFocusableWidgetEh:
+	ld	hl, -3
+	call	__frameset
+	ld	e, (ix + 6)
+	ld	a, (__ZN3GUI21m_NumFocusableWidgetsE)
+	ld	d, a
+	ld	a, e
+	cp	a, d
+	jq	nc, BB3_6
+	ld	iy, __ZN3GUI18m_FocusableWidgetsE
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	ld	bc, 3
+	ld	(ix + -3), hl
+	call	__imulu
+	push	hl
+	pop	bc
+	add	iy, bc
+	ld	hl, 0
+	ld	(iy), hl
+	dec	d
+	ld	a, d
+	ld	(__ZN3GUI21m_NumFocusableWidgetsE), a
+	cp	a, e
+	jq	c, BB3_3
+	ld	e, d
+BB3_3:
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	ld	de, (ix + -3)
+	or	a, a
+	sbc	hl, de
+BB3_4:
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jq	z, BB3_6
+	ld	de, (iy)
+	ld	(iy + -3), de
+	dec	hl
+	lea	iy, iy + 3
+	jq	BB3_4
+BB3_6:
+	pop	hl
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI27RemoveAllUnfocusableWidgetsEv
+__ZN3GUI27RemoveAllUnfocusableWidgetsEv:
+	ld	bc, 0
+	ld	e, 0
+	ld	iy, __ZN3GUI20m_UnfocusableWidgetsE
+	ld	a, (__ZN3GUI23m_NumUnfocusableWidgetsE)
+	or	a, a
+	sbc	hl, hl
+	ld	l, a
+BB4_1:
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jq	z, BB4_2
+	ld	(iy), bc
+	dec	hl
+	lea	iy, iy + 3
+	jq	BB4_1
+BB4_2:
+	ld	a, e
+	ld	(__ZN3GUI23m_NumUnfocusableWidgetsE), a
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI25RemoveAllFocusableWidgetsEv
+__ZN3GUI25RemoveAllFocusableWidgetsEv:
+	ld	bc, 0
+	ld	e, 0
+	ld	iy, __ZN3GUI18m_FocusableWidgetsE
+	ld	a, (__ZN3GUI21m_NumFocusableWidgetsE)
+	or	a, a
+	sbc	hl, hl
+	ld	l, a
+BB5_1:
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jq	z, BB5_2
+	ld	(iy), bc
+	dec	hl
+	lea	iy, iy + 3
+	jq	BB5_1
+BB5_2:
+	ld	a, e
+	ld	(__ZN3GUI21m_NumFocusableWidgetsE), a
+	ld	(__ZN3GUI11m_LastFocusE), a
+	ld	(__ZN3GUI7m_FocusE), a
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI24RunAllUnfocusableWidgetsEv
+__ZN3GUI24RunAllUnfocusableWidgetsEv:
+	ld	hl, -9
+	call	__frameset
+	ld	c, 0
+	ld	iy, __ZN3GUI20m_UnfocusableWidgetsE
+	ld	de, 0
+	push	de
+	pop	hl
+BB6_1:
+	ld	a, (__ZN3GUI23m_NumUnfocusableWidgetsE)
+	ld	e, a
+	ld	(ix + -9), hl
+	or	a, a
+	sbc	hl, de
+	jq	nc, BB6_2
+	ld	(ix + -3), bc
+	ld	(ix + -6), iy
+	ld	iy, (iy)
+	ld	hl, (iy)
+	ld	hl, (hl)
+	push	iy
+	call	__indcallhl
+	pop	hl
+	ld	hl, (ix + -6)
+	ld	iy, (hl)
+	ld	a, (iy + 3)
+	ld	l, 1
+	xor	a, l
+	xor	a, l
+	bit	0, a
+	ld	hl, (ix + -3)
+	push	hl
+	call	z, __ZN3GUI23RemoveUnfocusableWidgetEh
+	pop	hl
+	ld	hl, (ix + -9)
+	inc	hl
+	ld	bc, (ix + -3)
+	inc	c
+	ld	iy, (ix + -6)
+	lea	iy, iy + 3
+	ld	de, 0
+	jq	BB6_1
+BB6_2:
+	ld	sp, ix
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI20RunUnfocusableWidgetEh
+__ZN3GUI20RunUnfocusableWidgetEh:
+	ld	hl, -1
+	call	__frameset
+	ld	e, (ix + 6)
+	ld	a, (__ZN3GUI23m_NumUnfocusableWidgetsE)
+	ld	l, a
+	ld	a, e
+	cp	a, l
+	jq	nc, BB7_2
+	ld	iy, __ZN3GUI20m_UnfocusableWidgetsE
+	ld	(ix + -1), l
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	ld	bc, 3
+	call	__imulu
+	push	hl
+	pop	de
+	add	iy, de
+	ld	iy, (iy)
+	ld	hl, (iy)
+	ld	hl, (hl)
+	push	iy
+	call	__indcallhl
+	ld	e, (ix + 6)
+	pop	hl
+	ld	l, (ix + -1)
+BB7_2:
+	ld	a, e
+	cp	a, l
+	jq	c, BB7_3
+	ld	a, 0
+	jq	BB7_5
+BB7_3:
+	ld	a, 1
+BB7_5:
+	inc	sp
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI16RunFocusedWidgetEv
+__ZN3GUI16RunFocusedWidgetEv:
+	ld	iy, __ZN3GUI18m_FocusableWidgetsE
+	ld	a, (__ZN3GUI7m_FocusE)
+	or	a, a
+	sbc	hl, hl
+	ld	l, a
+	ld	bc, 3
+	call	__imulu
+	push	hl
+	pop	de
+	add	iy, de
+	ld	iy, (iy)
+	ld	hl, (iy)
+	ld	hl, (hl)
+	push	iy
+	call	__indcallhl
+	pop	hl
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI26PaintAllUnfocusableWidgetsEv
+__ZN3GUI26PaintAllUnfocusableWidgetsEv:
+	ld	hl, -6
+	call	__frameset
+	ld	iy, __ZN3GUI20m_UnfocusableWidgetsE
+	ld	de, 0
+	push	de
+	pop	bc
+BB9_1:
+	ld	a, (__ZN3GUI23m_NumUnfocusableWidgetsE)
+	ld	e, a
+	push	bc
+	pop	hl
+	or	a, a
+	sbc	hl, de
+	jq	nc, BB9_2
+	ld	hl, (iy)
+	ld	(ix + -3), iy
+	ld	iy, (hl)
+	ld	iy, (iy + 3)
+	push	hl
+	ld	(ix + -6), bc
+	call	__indcall
+	ld	bc, (ix + -6)
+	ld	de, 0
+	ld	iy, (ix + -3)
+	pop	hl
+	inc	bc
+	lea	iy, iy + 3
+	jq	BB9_1
+BB9_2:
+	ld	sp, ix
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI22PaintUnfocusableWidgetEh
+__ZN3GUI22PaintUnfocusableWidgetEh:
+	ld	hl, -1
+	call	__frameset
+	ld	e, (ix + 6)
+	ld	a, (__ZN3GUI23m_NumUnfocusableWidgetsE)
+	ld	l, a
+	ld	a, e
+	cp	a, l
+	jq	nc, BB10_2
+	ld	iy, __ZN3GUI20m_UnfocusableWidgetsE
+	ld	(ix + -1), l
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	ld	bc, 3
+	call	__imulu
+	push	hl
+	pop	de
+	add	iy, de
+	ld	hl, (iy)
+	ld	iy, (hl)
+	ld	iy, (iy + 3)
+	push	hl
+	call	__indcall
+	ld	e, (ix + 6)
+	pop	hl
+	ld	l, (ix + -1)
+BB10_2:
+	ld	a, e
+	cp	a, l
+	jq	c, BB10_3
+	ld	a, 0
+	jq	BB10_5
+BB10_3:
+	ld	a, 1
+BB10_5:
+	inc	sp
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI24PaintAllFocusableWidgetsEv
+__ZN3GUI24PaintAllFocusableWidgetsEv:
+	ld	hl, -6
+	call	__frameset
+	ld	iy, __ZN3GUI18m_FocusableWidgetsE
+	ld	de, 0
+	push	de
+	pop	bc
+BB11_1:
+	ld	a, (__ZN3GUI21m_NumFocusableWidgetsE)
+	ld	e, a
+	push	bc
+	pop	hl
+	or	a, a
+	sbc	hl, de
+	jq	nc, BB11_2
+	ld	hl, (iy)
+	ld	(ix + -3), iy
+	ld	iy, (hl)
+	ld	iy, (iy + 3)
+	push	hl
+	ld	(ix + -6), bc
+	call	__indcall
+	ld	bc, (ix + -6)
+	ld	de, 0
+	ld	iy, (ix + -3)
+	pop	hl
+	inc	bc
+	lea	iy, iy + 3
+	jq	BB11_1
+BB11_2:
+	ld	sp, ix
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI18PaintFocusedWidgetEv
+__ZN3GUI18PaintFocusedWidgetEv:
+	ld	iy, __ZN3GUI18m_FocusableWidgetsE
+	ld	a, (__ZN3GUI11m_LastFocusE)
+	ld	c, a
+	ld	a, (__ZN3GUI7m_FocusE)
+	ld	e, a
+	ld	a, c
+	cp	a, e
+	jq	nz, BB12_1
+	jq	BB12_2
+BB12_1:
+	or	a, a
+	sbc	hl, hl
+	ld	l, c
+	ld	bc, 3
+	call	__imulu
+	push	hl
+	pop	de
+	lea	hl, iy + 0
+	add	hl, de
+	ld	hl, (hl)
+	ld	iy, (hl)
+	ld	iy, (iy + 6)
+	push	hl
+	call	__indcall
+	ld	iy, __ZN3GUI18m_FocusableWidgetsE
+	pop	hl
+	ld	a, (__ZN3GUI7m_FocusE)
+	ld	c, a
+	ld	(__ZN3GUI11m_LastFocusE), a
+BB12_2:
+	or	a, a
+	sbc	hl, hl
+	ld	l, c
+	ld	bc, 3
+	call	__imulu
+	push	hl
+	pop	de
+	add	iy, de
+	ld	hl, (iy)
+	ld	iy, (hl)
+	ld	iy, (iy + 3)
+	push	hl
+	call	__indcall
+	pop	hl
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI8SetFocusEh
+__ZN3GUI8SetFocusEh:
+	call	__frameset0
+	ld	l, (ix + 6)
+	ld	a, (__ZN3GUI21m_NumFocusableWidgetsE)
+	ld	e, a
+	ld	a, l
+	cp	a, e
+	jq	nc, BB13_2
+	ld	a, l
+	ld	(__ZN3GUI7m_FocusE), a
+BB13_2:
+	ld	a, l
+	cp	a, e
+	jq	c, BB13_3
+	ld	a, 0
+	jq	BB13_5
+BB13_3:
+	ld	a, 1
+BB13_5:
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI13MoveFocusBackEv
+__ZN3GUI13MoveFocusBackEv:
+	ld	a, (__ZN3GUI7m_FocusE)
+	ld	l, a
+	or	a, a
+	jq	z, BB14_2
+	ld	a, l
+	dec	a
+	ld	(__ZN3GUI7m_FocusE), a
+BB14_2:
+	ld	a, l
+	or	a, a
+	jq	nz, BB14_3
+	ld	a, 0
+	ret
+BB14_3:
+	ld	a, 1
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN3GUI16MoveFocusForwardEv
+__ZN3GUI16MoveFocusForwardEv:
+	ld	a, (__ZN3GUI7m_FocusE)
+	ld	l, a
+	inc	l
+	ld	a, (__ZN3GUI21m_NumFocusableWidgetsE)
+	ld	e, a
+	ld	a, l
+	cp	a, e
+	jq	nc, BB15_2
+	ld	a, l
+	ld	(__ZN3GUI7m_FocusE), a
+BB15_2:
+	ld	a, l
+	cp	a, e
+	jq	c, BB15_3
+	ld	a, 0
+	ret
+BB15_3:
+	ld	a, 1
+	ret
+	section	.text,"ax",@progbits
+
+	section	.bss,"aw",@nobits
+	public	__ZN3GUI8instanceE
+__ZN3GUI8instanceE:
+	rb	1
+
+	section	.bss,"aw",@nobits
+	public	__ZN3GUI20m_UnfocusableWidgetsE
+__ZN3GUI20m_UnfocusableWidgetsE:
+	rb	9
+
+	section	.bss,"aw",@nobits
+	public	__ZN3GUI18m_FocusableWidgetsE
+__ZN3GUI18m_FocusableWidgetsE:
+	rb	18
+
+	section	.bss,"aw",@nobits
+	public	__ZN3GUI23m_NumUnfocusableWidgetsE
+__ZN3GUI23m_NumUnfocusableWidgetsE:
+	rb	1
+
+	section	.bss,"aw",@nobits
+	public	__ZN3GUI21m_NumFocusableWidgetsE
+__ZN3GUI21m_NumFocusableWidgetsE:
+	rb	1
+
+	section	.bss,"aw",@nobits
+	public	__ZN3GUI11m_LastFocusE
+__ZN3GUI11m_LastFocusE:
+	rb	1
+
+	section	.bss,"aw",@nobits
+	public	__ZN3GUI7m_FocusE
+__ZN3GUI7m_FocusE:
+	rb	1
+
+	section	.data,"aw",@progbits
+	public	__ZN3GUI12m_BackgroundE
+__ZN3GUI12m_BackgroundE:
+	db	2
+
+	ident	"clang version 12.0.0 (https://github.com/jacobly0/llvm-project 170be88120e3aa88c20eea5615ba76b8f1d6c647)"
+	extern	__Unwind_SjLj_Register
+	extern	__frameset
+	extern	__indcall
+	extern	__indcallhl
+	extern	__Unwind_SjLj_Unregister
+	extern	__imulu
+	extern	__frameset0

@@ -1,0 +1,137 @@
+	section	.text,"ax",@progbits
+	assume	adl = 1
+	section	.text,"ax",@progbits
+	public	__ZN6GraphX7p_BeginEv
+__ZN6GraphX7p_BeginEv:
+	call	__frameset0
+	call	_gfx_Begin
+	ld	iy, (ix + 6)
+	ld	hl, (iy)
+	ld	de, (iy + 3)
+	ld	a, (iy + 6)
+	ld	c, a
+	push	bc
+	push	de
+	push	hl
+	call	_gfx_SetPalette
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	iy, (ix + 6)
+	ld	a, (iy + 7)
+	ld	l, a
+	push	hl
+	call	_gfx_SetTransparentColor
+	pop	hl
+	ld	hl, 1
+	push	hl
+	call	_gfx_SetDraw
+	pop	hl
+	ld	a, 1
+	ld	(__ZN6GraphX8m_ActiveE), a
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN6GraphXC2EPKvjhh
+__ZN6GraphXC2EPKvjhh:
+	call	__frameset0
+	ld	iy, (ix + 6)
+	ld	hl, (ix + 9)
+	ld	de, (ix + 12)
+	ld	a, (ix + 15)
+	ld	c, (ix + 18)
+	ld	(iy), hl
+	ld	(iy + 3), de
+	ld	(iy + 6), a
+	ld	(iy + 7), c
+	ld	hl, (__ZN6GraphX8instanceE)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jq	nz, BB1_2
+	ld	hl, __ZN6GraphX3EndEv
+	ld	de, __ZN6GraphX5BeginEv
+	ld	(__ZN6GraphX8instanceE), iy
+	push	de
+	push	hl
+	call	_ti_SetGCBehavior
+	pop	hl
+	pop	hl
+	ld	hl, (__ZN6GraphX8instanceE)
+	push	hl
+	call	__ZN6GraphX7p_BeginEv
+	pop	hl
+BB1_2:
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN6GraphX3EndEv
+__ZN6GraphX3EndEv:
+	ld	hl, (__ZN6GraphX8instanceE)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jq	z, BB2_2
+	call	_gfx_End
+	xor	a, a
+	ld	(__ZN6GraphX8m_ActiveE), a
+BB2_2:
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN6GraphX5BeginEv
+__ZN6GraphX5BeginEv:
+	ld	hl, (__ZN6GraphX8instanceE)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	push	hl
+	call	nz, __ZN6GraphX7p_BeginEv
+	pop	hl
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__ZN6GraphXD2Ev
+__ZN6GraphXD2Ev:
+	call	__frameset0
+	ld	hl, (__ZN6GraphX8instanceE)
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	call	nz, __ZN6GraphX3EndEv
+	ld	hl, 0
+	ld	(__ZN6GraphX8instanceE), hl
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.bss,"aw",@nobits
+	public	__ZN6GraphX8m_ActiveE
+__ZN6GraphX8m_ActiveE:
+	rb	1
+
+	section	.bss,"aw",@nobits
+	public	__ZN6GraphX8instanceE
+__ZN6GraphX8instanceE:
+	rb	3
+
+	public	__ZN6GraphXC1EPKvjhh
+	label	__ZN6GraphXC1EPKvjhh at __ZN6GraphXC2EPKvjhh
+	public	__ZN6GraphXD1Ev
+	label	__ZN6GraphXD1Ev at __ZN6GraphXD2Ev
+	ident	"clang version 12.0.0 (https://github.com/jacobly0/llvm-project 170be88120e3aa88c20eea5615ba76b8f1d6c647)"
+	extern	__Unwind_SjLj_Register
+	extern	__Unwind_SjLj_Unregister
+	extern	_gfx_SetTransparentColor
+	extern	_gfx_Begin
+	extern	_gfx_SetPalette
+	extern	_ti_SetGCBehavior
+	extern	_gfx_End
+	extern	__frameset0
+	extern	_gfx_SetDraw

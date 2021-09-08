@@ -14,7 +14,7 @@
 InputBuffer::InputBuffer(const size_t size): m_Size(size), m_WriteOffset(0)
 {
   m_Buffer = new char[size];
-  memset(m_Buffer, NULL, size);
+  memset(m_Buffer, '\0', size);
 }
 
 
@@ -34,12 +34,12 @@ bool InputBuffer::AddChar(const char c)
 
 char InputBuffer::RemoveChar()
 {
-  char removed = NULL;
+  char removed = '\0';
   
   if (m_WriteOffset)
   {
     removed = m_Buffer[--m_WriteOffset];
-    m_Buffer[m_WriteOffset] = NULL;
+    m_Buffer[m_WriteOffset] = '\0';
   }
   
   return removed;

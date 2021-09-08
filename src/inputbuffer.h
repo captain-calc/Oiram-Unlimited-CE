@@ -82,7 +82,7 @@ class InputBuffer
     char *GetBuffer() const { return m_Buffer; }
     size_t GetSize() const { return m_Size; }
     
-    virtual ~InputBuffer() { delete [] m_Buffer; }
+    ~InputBuffer() { delete [] m_Buffer; }
 };
 
 

@@ -187,7 +187,7 @@ class NumericalInput : public InputBuffer, public FocusableWidget
     long GetValue() { return atol(GetBuffer()); }
     bool IsValidValue();
     
-    virtual ~NumericalInput() {}
+    ~NumericalInput() {}
 };
 
 #endif

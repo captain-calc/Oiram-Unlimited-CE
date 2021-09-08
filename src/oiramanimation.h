@@ -93,7 +93,7 @@ class OiramAnimation : public UnfocusableWidget
     void SetOiramSuit(const uint8_t suit);
     void SetOiramInvincibility(const bool invincible);
     
-    virtual ~OiramAnimation() {}
+    ~OiramAnimation() {}
 };
 
 #endif

@@ -1,0 +1,53 @@
+	section	.text,"ax",@progbits
+	assume	adl = 1
+	section	.text,"ax",@progbits
+	public	__Z19cutil_PrintCenteredPKch
+__Z19cutil_PrintCenteredPKch:
+	call	__frameset0
+	ld	hl, (ix + 6)
+	push	hl
+	call	_gfx_GetStringWidth
+	pop	de
+	ld	c, 1
+	call	__ishru
+	push	hl
+	pop	de
+	ld	hl, 160
+	or	a, a
+	sbc	hl, de
+	ld	de, 0
+	ld	e, (ix + 9)
+	push	de
+	push	hl
+	ld	hl, (ix + 6)
+	push	hl
+	call	_gfx_PrintStringXY
+	ld	sp, ix
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	__Z20cutil_GetPackPointerh
+__Z20cutil_GetPackPointerh:
+	call	__frameset0
+	ld	a, (ix + 6)
+	ld	l, a
+	push	hl
+	call	_ti_GetDataPtr
+	push	hl
+	pop	iy
+	pop	hl
+	lea	hl, iy + 2
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	ident	"clang version 14.0.0 (https://github.com/jacobly0/llvm-project a139def90d26173f771eb1eca797633d1fbb2797)"
+	extern	__Unwind_SjLj_Register
+	extern	__Unwind_SjLj_Unregister
+	extern	_gfx_GetStringWidth
+	extern	_ti_GetDataPtr
+	extern	_gfx_PrintStringXY
+	extern	__frameset0
+	extern	__ishru
