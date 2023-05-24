@@ -1,5 +1,5 @@
 // Name:    Captain Calc
-// Date:    August 9, 2021
+// Date:    May 23, 2023
 // File:    main.cpp
 // Purpose: This file provides the main control loop of the program.
 
@@ -63,9 +63,6 @@ int main()
 {
   bool exit_menu = false;
   char *pack_name;
-  
-  // Close any open slots.
-  ti_CloseAll();
   
   if (mainfuncs_OiramSaveAppvarExists())
   {

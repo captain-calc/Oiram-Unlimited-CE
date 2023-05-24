@@ -1,10 +1,11 @@
 // Name:    Captain Calc
-// Date:    August 11, 2021
+// Date:    May 23, 2023
 // File:    oiramanimation.cpp
 // Purpose: This file contains the definitions for the member functions of the
 //          OiramAnimation class declared in oiramanimation.h.
 
 
+#include <sys/lcd.h>
 #include <graphx.h>
 
 #include "ccdbg.h"

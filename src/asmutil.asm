@@ -1,9 +1,12 @@
 ; Name:    Captain Calc
-; Date:    August 8, 2021
+; Date:    May 23, 2023
 ; File:    asmutil.asm
 ; Purpose: Provides the definitions of the functions declared in asmutil.h.
 ;          Also defines any internal routines used by the public functions.
 
+assume ADL=1
+
+section .text
 
 	public _asm_GetCSC
 _asm_GetCSC:
